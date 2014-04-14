@@ -1,10 +1,9 @@
-# client-template
+# super-bank
 
-Serves as a template for client JavaScript applications.
+A graphical bank application.
 
-It uses:
-* Jade
-* Less
-* Grunt
-* JSHint
-* Node.js
+The user starts with an initial balance of $1,000.00.  User may:
+* Deposit any amount
+* Withdraw any amount
+* If withdrawal yields a negative account balance a $50 bank fee applies
+* If bank balance is less than $750, the account closes
