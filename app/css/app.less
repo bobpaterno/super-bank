@@ -1,7 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url(http://fonts.googleapis.com/css?family=Diplomata+SC);
 
 body {
   background-image: url('../media/green_cup.png');
+}
+
+h1 {
+  font-family: 'Diplomata SC', cursive;
 }
 
 h3, #display-view {
@@ -26,7 +31,10 @@ h3, #display-view {
 
 #ledger-table {
   margin: 10px;
+  max-height: 300px;
+  overflow-y: scroll;
 }
+
 #ledger {
   border: 2px solid black;
   padding: 5px;
@@ -53,8 +61,8 @@ tr {
   color: #aa1111;
 }
 
-.pos-balance {
-  color: black;
+.neg-balance {
+  color: #cb1414;
 }
 
 .fee-amt {

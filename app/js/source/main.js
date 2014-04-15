@@ -18,7 +18,6 @@ function updateBalance() {
   bal = (bal<0) ? bal-50 : bal;
   $('#display').text(bal.toFixed(2));
 
-  // Update ledger with new row
   updateLedger(bal, amt, type);
 }
 
@@ -49,6 +48,7 @@ function updateLedger(bal, amt, type) {
     if (bal < 0) {
       $tdFee.text('-$50');
       $tdFee.addClass('fee-amt');
+      $tdBal.addClass('neg-balance');
     }
 
     $tr.append($tdFee,$tdDep,$tdWith,$tdBal);
@@ -57,7 +57,7 @@ function updateLedger(bal, amt, type) {
 
 function formatCurrency(num) {
   num = num.toFixed(2);
-  return (num<0)? '$(' + num + ')': '$' + num;
+  return (num<0)? '$(' + num*-1 + ')': '$' + num;
 }
 
 })();
