@@ -1,8 +1,37 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+body {
+  background-image: url('../media/green_cup.png');
+}
+
+h3, #display-view {
+  padding:5px;
+}
+
+.button {
+  background-color: #374536;
+  border-radius: 9px;
+  color: #eeffee;
+  margin: 6px;
+}
+
+#display-view, h3, #amount {
+  margin-left: 10px;
+}
+
+#display-view {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2em;
+}
+
+#ledger-table {
+  margin: 10px;
+}
 #ledger {
   border: 2px solid black;
   padding: 5px;
   tr:nth-child(2n) {
-    background-color: #cccccc;
+    background-color: rgba(68, 111, 53, 0.45);
   }
 }
 
@@ -17,11 +46,11 @@ tr {
 }
 
 .deposit-amt {
-  color: green;
+  color: #173d18;
 }
 
 .withdraw-amt {
-  color: red;
+  color: #aa1111;
 }
 
 .pos-balance {
@@ -29,5 +58,5 @@ tr {
 }
 
 .fee-amt {
-  color: blue;
+  color: #283879;
 }

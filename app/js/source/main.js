@@ -27,31 +27,31 @@ function getBalance() {
 }
 
 function updateLedger(bal, amt, type) {
-    var $td1 = $('<td>');
-    var $td2 = $('<td>');
-    var $td3 = $('<td>');
-    var $td4 = $('<td>');
+    var $tdFee = $('<td>');
+    var $tdDep = $('<td>');
+    var $tdWith = $('<td>');
+    var $tdBal = $('<td>');
     var $tr = $('<tr>');
 
     amt = formatCurrency(amt);
     switch(type) {
     case 'Deposit':
-        $td2.text(amt);
-        $td2.addClass('deposit-amt');
+        $tdDep.text(amt);
+        $tdDep.addClass('deposit-amt');
         break;
       case 'Withdraw':
-        $td3.text(amt);
-        $td3.addClass('withdraw-amt');
+        $tdWith.text(amt);
+        $tdWith.addClass('withdraw-amt');
     }
 
-    $td4.text(formatCurrency(bal));
-    $td4.addClass('balance');
+    $tdBal.text(formatCurrency(bal));
+    $tdBal.addClass('balance');
     if (bal < 0) {
-      $td1.text(50);
-      $td1.addClass('fee-amt');
+      $tdFee.text('-$50');
+      $tdFee.addClass('fee-amt');
     }
 
-    $tr.append($td1,$td2,$td3,$td4);
+    $tr.append($tdFee,$tdDep,$tdWith,$tdBal);
     $('#ledger > tbody').append($tr);
 }
 
