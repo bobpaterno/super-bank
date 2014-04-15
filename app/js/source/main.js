@@ -26,12 +26,12 @@ function updateLedger(bal, amt, type) {
         $td2.addClass('deposit-amt');
         break;
       case 'withdraw':
-        $td2.text(amt);
-        $td2.addClass('deposit-amt');
-        break;
-      case 'fee':
-        $td1.text(amt);
-        $td1.addClass('fee-amt');
+        $td3.text(amt);
+        $td3.addClass('withdraw-amt');
+    }
+    if (bal < 0) {
+      $td1.text(50);
+      $td1.addClass('fee-amt');
     }
 
     $td4.text(bal);
@@ -46,8 +46,10 @@ function deposit() {
   $('#amount').val('');
 
   // Calculate balance
+  amt = Math.abs(amt);
   bal = getBalance();
-  bal += (Math.abs(amt));
+  bal += amt;
+  bal = (bal<0) ? bal-50 : bal;
   $('#display').text(bal);
 
   // Update ledger with new row
@@ -60,15 +62,15 @@ function withdraw() {
   $('#amount').val('');
 
   // Calculate balance
+  amt = Math.abs(amt);
   bal = getBalance();
-  bal -= (Math.abs(amt));
+  bal -= amt;
+  bal = (bal<0) ? bal-50 : bal;
   $('#display').text(bal);
 
   // Update ledger with new row
   updateLedger(bal, amt, 'withdraw');
-  if(bal < 0) {
-    updateLedger(bal, 50, 'fee');
-  }
+
 }
 
 
