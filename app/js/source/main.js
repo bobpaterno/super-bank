@@ -4,14 +4,27 @@
 $(document).ready(initialize);
 
 function initialize() {
-  $('#deposit').click(deposit);
-  $('#withdraw').click(withdraw);
+  $('.button').click(updateBalance);
+}
+
+function updateBalance() {
+  var type = this.textContent;
+  var bal = getBalance();
+  var amt = $('#amount').val() * 1;
+
+  amt = (type === 'Withdraw') ? amt*-1 : amt;
+
+  bal += amt;
+  bal = (bal<0) ? bal-50 : bal;
+  $('#display').text(bal.toFixed(2));
+
+  // Update ledger with new row
+  updateLedger(bal, amt, type);
 }
 
 function getBalance() {
   return $('#display').text() * 1;
 }
-
 
 function updateLedger(bal, amt, type) {
     var $td1 = $('<td>');
@@ -20,59 +33,31 @@ function updateLedger(bal, amt, type) {
     var $td4 = $('<td>');
     var $tr = $('<tr>');
 
+    amt = formatCurrency(amt);
     switch(type) {
-      case 'deposit':
+    case 'Deposit':
         $td2.text(amt);
         $td2.addClass('deposit-amt');
         break;
-      case 'withdraw':
+      case 'Withdraw':
         $td3.text(amt);
         $td3.addClass('withdraw-amt');
     }
+
+    $td4.text(formatCurrency(bal));
+    $td4.addClass('balance');
     if (bal < 0) {
       $td1.text(50);
       $td1.addClass('fee-amt');
     }
 
-    $td4.text(bal);
-    $td4.addClass('pos-balance');
     $tr.append($td1,$td2,$td3,$td4);
     $('#ledger > tbody').append($tr);
 }
 
-function deposit() {
-  var amt, bal;
-  amt = $('#amount').val() * 1;
-  $('#amount').val('');
-
-  // Calculate balance
-  amt = Math.abs(amt);
-  bal = getBalance();
-  bal += amt;
-  bal = (bal<0) ? bal-50 : bal;
-  $('#display').text(bal);
-
-  // Update ledger with new row
-  updateLedger(bal, amt, 'deposit');
+function formatCurrency(num) {
+  num = num.toFixed(2);
+  return (num<0)? '$(' + num + ')': '$' + num;
 }
-
-function withdraw() {
-  var amt, bal;
-  amt = $('#amount').val() * 1;
-  $('#amount').val('');
-
-  // Calculate balance
-  amt = Math.abs(amt);
-  bal = getBalance();
-  bal -= amt;
-  bal = (bal<0) ? bal-50 : bal;
-  $('#display').text(bal);
-
-  // Update ledger with new row
-  updateLedger(bal, amt, 'withdraw');
-
-}
-
-
 
 })();
