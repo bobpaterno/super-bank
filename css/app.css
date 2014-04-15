@@ -1,0 +1,59 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url(http://fonts.googleapis.com/css?family=Diplomata+SC);
+body {
+  background-image: url('../media/green_cup.png');
+}
+h1 {
+  font-family: 'Diplomata SC', cursive;
+}
+h3,
+#display-view {
+  padding: 5px;
+}
+.button {
+  background-color: #374536;
+  border-radius: 9px;
+  color: #eeffee;
+  margin: 6px;
+}
+#display-view,
+h3,
+#amount {
+  margin-left: 10px;
+}
+#display-view {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.2em;
+}
+#ledger-table {
+  margin: 10px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+#ledger {
+  border: 2px solid black;
+  padding: 5px;
+}
+#ledger tr:nth-child(2n) {
+  background-color: rgba(68, 111, 53, 0.45);
+}
+td {
+  min-width: 80px;
+  padding: 3px;
+  text-align: center;
+}
+tr {
+  border-bottom: 2px;
+}
+.deposit-amt {
+  color: #173d18;
+}
+.withdraw-amt {
+  color: #aa1111;
+}
+.neg-balance {
+  color: #cb1414;
+}
+.fee-amt {
+  color: #283879;
+}
